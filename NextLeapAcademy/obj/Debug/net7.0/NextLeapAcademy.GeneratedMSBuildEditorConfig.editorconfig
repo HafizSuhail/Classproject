@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Course/AddCourses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEFkZENvdXJzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Course/CoursesList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENvdXJzZXNMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
