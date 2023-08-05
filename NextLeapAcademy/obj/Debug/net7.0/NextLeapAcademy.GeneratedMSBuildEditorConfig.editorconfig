@@ -9,41 +9,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NextLeapAcademy
 build_property.RootNamespace = NextLeapAcademy
-build_property.ProjectDir = C:\Users\USER\Desktop\ASP.NET Core MVC\Training\NextLeapAcademy\NextLeapAcademy\
+build_property.ProjectDir = D:\.Net Developer\ASP.NET Core MVC\Training\NextLeapAcademy\NextLeapAcademy\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\USER\Desktop\ASP.NET Core MVC\Training\NextLeapAcademy\NextLeapAcademy
+build_property.MSBuildProjectDirectory = D:\.Net Developer\ASP.NET Core MVC\Training\NextLeapAcademy\NextLeapAcademy
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/_ViewImports.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/_ViewStart.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Account/Login.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Home/Homepage.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Course/CoursesList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENvdXJzZXNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Home/Homepage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lcGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Student/StudentList.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Student/AddStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxBZGRTdHVkZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Views/Student/StudentList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxTdHVkZW50TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/Shared/_LoginLayout.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/Shared/_LoginLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-jddp8kt8kz
 
-[C:/Users/USER/Desktop/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/Shared/_MainLayout.cshtml]
+[D:/.Net Developer/ASP.NET Core MVC/Training/NextLeapAcademy/NextLeapAcademy/Pages/Shared/_MainLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9NYWluTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-jxjqfk0nty

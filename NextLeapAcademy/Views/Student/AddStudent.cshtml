@@ -1,0 +1,86 @@
+﻿@model NextLeapAcademy.Models.StudenteditorModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_MainLayout";
+}
+
+
+
+@*<h4>Student</h4>*@
+
+@*container position-absolute top-50  start-50 translate-middle*@
+
+<div class="">
+
+    <h1 class=" offset-3 align-content-center">STUDENT REGISTRATION FORM</h1>
+    <hr />
+
+    <div class="row align-content-center">
+        <div class="col-md-5 offset-3">
+            <form method="post"
+                  asp-controller="Student"
+                  asp-action="StudentForm">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class=" text-center font-weight-normal text-info-emphasis fs-4">
+                <p>STUDENT REGISTRATION FORM</p>
+                </div>
+                <div class="alert alert-info text-center" role="alert">
+                    <h5>Bacic Details</h5>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RollNumber" class="control-label"></label>
+                    <input asp-for="RollNumber" class="form-control" />
+                    <span asp-validation-for="RollNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <input asp-for="Gender" class="form-control" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Dob" class="control-label"></label>
+                    <input asp-for="Dob" class="form-control" />
+                    <span asp-validation-for="Dob" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MobileNumber" class="control-label"></label>
+                    <input asp-for="MobileNumber" class="form-control" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mt-2 float-end">
+                    <a class="btn btn-secondary " asp-action="StudentList">Back</a>
+                    <button class="btn btn-primary " type="submit">Save</button>
+                </div>
+            </form>
+
+           
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+@*<div>
+    <a asp-action="StudentList">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

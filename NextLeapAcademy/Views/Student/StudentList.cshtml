@@ -2,4 +2,52 @@
     Layout = "_MainLayout";
 }
 
-<h1>its a student list page</h1>
+@model IList<NextLeapAcademy.BusinessEntities.Student>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="container">
+
+            <div>
+                <a class="btn btn-primary btn-sm float-end mb-2 " role="button" type="link" href="@Url.Action(controller:"Student",action:"AddStudent")">Add Student</a>
+            </div>
+
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr class="table-active">
+                        <th>RollNumber</th>
+                        <th>Student Name</th>
+                        <th>Gender</th>
+                        <th>Date OF Brith</th>
+                        <th>Mobile Number</th>
+                        <th>Email_ID</th>
+                        <th colspan="2">Modify</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var stobj in Model)
+                    {
+                        <tr>
+                            <td>@stobj.RollNumber</td>
+                            <td class="text-primary">@stobj.StudentName</td>
+                            <td>@stobj.Gender</td>
+                            <td>@stobj.Dob.ToShortDateString()</td>
+                            <td>@stobj.MobileNumber</td>
+                            <td>@stobj.Email</td>
+                            <td><a class="btn btn-info btn-sm" href="@Url.Action("StudentRo","Student",new{Studentid = stobj.StudentId})">View</a></td>
+                            <td><a class="btn btn-secondary btn-sm" href="@Url.Action("Studenteditor","Student",new{Studentid = stobj.StudentId})">Edit</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+</div>
