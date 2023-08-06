@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NextLeapAcademy.BusinessEntities;
 using NextLeapAcademy.Models;
+using System.Linq.Expressions;
 
 namespace NextLeapAcademy
 {
@@ -70,5 +71,85 @@ namespace NextLeapAcademy
 
             
         }
+        [HttpGet]
+        public IActionResult Seditorpage(int Studentid)
+        {
+            if (ModelState.IsValid) 
+            {
+                // Object of DB CLASS
+                var dbobject = new Nextleapdbcontex();
+
+                // Create a varaible & Fetch the studentID from DB_Class
+                var fetchstuid = dbobject.Students.Where(P => P.StudentId == Studentid).FirstOrDefault();
+
+                // Object of Model Class
+                var editStudent = new StudenteditorModel();
+
+                editStudent.RollNumber = fetchstuid.RollNumber;
+                editStudent.Name = fetchstuid.StudentName;
+                editStudent.Gender = fetchstuid.Gender;
+                editStudent.Dob = fetchstuid.Dob;
+                editStudent.MobileNumber = fetchstuid.MobileNumber;
+                editStudent.Email = fetchstuid.Email;
+                editStudent.StudentId = fetchstuid.StudentId;
+
+                return View(editStudent);
+            }else 
+            {
+                ModelState.AddModelError("", "Student record not Save, please fix errors and save again!");
+                return RedirectToAction("StudentList", Studentid);
+                    
+            } 
+        }
+        [HttpPost]
+        public IActionResult Update (StudenteditorModel updateinputs) 
+        {
+            
+           
+                // Create an object of DB_Class
+                var uptodb = new Nextleapdbcontex();
+                //fetching the student obj from database
+                var fetinputid = uptodb.Students.Where(P => P.StudentId == updateinputs.StudentId).FirstOrDefault();
+
+                
+                fetinputid.RollNumber = updateinputs.RollNumber;
+                fetinputid.StudentName = updateinputs.Name;
+                fetinputid.Gender = updateinputs.Gender;
+                fetinputid.Dob = updateinputs.Dob;
+                fetinputid.MobileNumber = updateinputs.MobileNumber;
+                fetinputid.Email = updateinputs.Email;
+                fetinputid.StudentId = updateinputs.StudentId;
+
+                uptodb.Students.Update(fetinputid);
+                uptodb.SaveChanges();
+                return RedirectToAction("StudentList");
+            
+        }
+
+        [HttpPost]
+        public JsonResult deleteStudent (int studId)
+        {
+            try
+            {
+                var dbcontext = new Nextleapdbcontex();
+                //get Student ob
+                var StudentObj = dbcontext.Students.Where(p => p.StudentId == studId).FirstOrDefault();
+
+                dbcontext.Students.Remove(StudentObj);
+                dbcontext.SaveChanges();
+
+                return Json(true);
+            }
+            catch
+            {
+                return Json(false);
+            }
+
+            
+        }
+
+
+
+
     }
 }

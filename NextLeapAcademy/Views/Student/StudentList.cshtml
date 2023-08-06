@@ -14,7 +14,7 @@
                 <a class="btn btn-primary btn-sm float-end mb-2 " role="button" type="link" href="@Url.Action(controller:"Student",action:"AddStudent")">Add Student</a>
             </div>
 
-            <table class="table table-bordered table-hover ">
+            <table class="table table-bordered table-hover" id="studentsList">
                 <thead>
                     <tr class="table-active">
                         <th>RollNumber</th>
@@ -23,7 +23,7 @@
                         <th>Date OF Brith</th>
                         <th>Mobile Number</th>
                         <th>Email_ID</th>
-                        <th colspan="2">Modify</th>
+                        <th colspan="3">Modify</th>
 
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@
 
                     @foreach (var stobj in Model)
                     {
-                        <tr>
+                        <tr id="@stobj.StudentId">
                             <td>@stobj.RollNumber</td>
                             <td class="text-primary">@stobj.StudentName</td>
                             <td>@stobj.Gender</td>
@@ -39,7 +39,8 @@
                             <td>@stobj.MobileNumber</td>
                             <td>@stobj.Email</td>
                             <td><a class="btn btn-info btn-sm" href="@Url.Action("StudentRo","Student",new{Studentid = stobj.StudentId})">View</a></td>
-                            <td><a class="btn btn-secondary btn-sm" href="@Url.Action("Studenteditor","Student",new{Studentid = stobj.StudentId})">Edit</a></td>
+                            <td><a class="btn btn-secondary btn-sm" href="@Url.Action("Seditorpage","Student",new{Studentid = stobj.StudentId})">Edit</a></td>
+                            <td><a class="btn btn-danger btn-sm" href="#" onclick="deleteStudent(@stobj.StudentId)">Delete</a></td>
                         </tr>
                     }
 
@@ -48,6 +49,48 @@
 
         </div>
     </div>
-
-
 </div>
+
+<script type ="text/javascript">
+
+    function deleteStudent(StudentId) {
+
+        var deleteStudentUrl = "https://localhost:7222/Student/deleteStudent";
+
+        var deleteStudentData = { studId : StudentId};
+
+        //Send the JSON data using $.post()
+
+        $.post(deleteStudentUrl,deleteStudentData,
+            function(response) {
+
+                if (response)
+                {
+                    // Success callback
+                    $("#studentsList").find("#" + StudentId).remove();
+                
+                }
+                else
+                {
+                    alert("Fail to delete a student, please contact admin!");
+                }
+
+            }, 'json')
+            .fail(function (xhr, status, error){
+                // Error callback
+                console.error('Error:', error);
+            });
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+
+    

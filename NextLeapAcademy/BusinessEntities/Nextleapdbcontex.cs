@@ -31,9 +31,7 @@ public partial class Nextleapdbcontex : DbContext
 
             entity.HasIndex(e => e.Title, "UQ__Courses__2CB664DC284236FD").IsUnique();
 
-            entity.Property(e => e.CourseId)
-                .ValueGeneratedNever()
-                .HasColumnName("Course_Id");
+            entity.Property(e => e.CourseId).HasColumnName("Course_Id");
             entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.Title).HasMaxLength(50);
         });

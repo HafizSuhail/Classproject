@@ -8,29 +8,27 @@
 
 
 
-@*<h4>Student</h4>*@
 
-@*container position-absolute top-50  start-50 translate-middle*@
 
 <div class="">
 
-    <h1 class=" offset-3 align-content-center">STUDENT REGISTRATION FORM</h1>
+    <h1 class=" offset-3 align-content-center">STUDENT MODIFICATION FORM</h1>
     <hr />
 
     <div class="row align-content-center">
         <div class="col-md-5 offset-3">
             <form method="post"
                   asp-controller="Student"
-                  asp-action="StudentForm">
+                  asp-action="Update">
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                @*<div class=" text-center font-weight-normal text-info-emphasis fs-4">
-                <p>STUDENT REGISTRATION FORM</p>
-                </div>*@
-                <div class="alert alert-info text-center" role="alert">
-                    <h5>Bacic Details</h5>
+                
+                <div class="alert alert-warning text-center" role="alert">
+                    <h5>Update the Details</h5>
                 </div>
+
+                <input asp-for="StudentId">
                 <div class="form-group">
                     <label asp-for="RollNumber" class="control-label"></label>
                     <input asp-for="RollNumber" class="form-control" />
@@ -63,11 +61,11 @@
                 </div>
                 <div class="mt-2 float-end">
                     <a class="btn btn-secondary " asp-action="StudentList">Back</a>
-                    <button class="btn btn-primary " type="submit">Save</button>
+                    <button class="btn btn-primary " type="submit">Update</button>
                 </div>
             </form>
 
-           
+
         </div>
     </div>
 
@@ -77,9 +75,6 @@
 </div>
 
 
-@*<div>
-    <a asp-action="StudentList">Back to List</a>
-</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
