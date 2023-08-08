@@ -3,15 +3,11 @@ using System.Collections.Generic;
 
 namespace NextLeapAcademy.BusinessEntities;
 
-public partial class Course
+public partial class Nationality
 {
-    public int CourseId { get; set; }
+    public int NationId { get; set; }
 
-    public string Title { get; set; }
-
-    public int Duration { get; set; }
-
-    public decimal Price { get; set; }
+    public string NationName { get; set; } = null!;
 
     public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

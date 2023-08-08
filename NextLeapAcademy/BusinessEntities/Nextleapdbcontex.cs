@@ -17,6 +17,8 @@ public partial class Nextleapdbcontex : DbContext
 
     public virtual DbSet<Course> Courses { get; set; }
 
+    public virtual DbSet<Nationality> Nationalities { get; set; }
+
     public virtual DbSet<Student> Students { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,6 +38,18 @@ public partial class Nextleapdbcontex : DbContext
             entity.Property(e => e.Title).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<Nationality>(entity =>
+        {
+            entity.HasKey(e => e.NationId).HasName("PK__National__3260523B916F1594");
+
+            entity.ToTable("Nationality");
+
+            entity.HasIndex(e => e.NationName, "UQ__National__99798A17BDA1C437").IsUnique();
+
+            entity.Property(e => e.NationId).HasColumnName("nation_Id");
+            entity.Property(e => e.NationName).HasMaxLength(25);
+        });
+
         modelBuilder.Entity<Student>(entity =>
         {
             entity.HasKey(e => e.StudentId).HasName("PK__Students__A2F4E98C8A7B6071");
@@ -43,6 +57,7 @@ public partial class Nextleapdbcontex : DbContext
             entity.HasIndex(e => e.RollNumber, "UQ__Students__E9F06F161F3CF903").IsUnique();
 
             entity.Property(e => e.StudentId).HasColumnName("Student_Id");
+            entity.Property(e => e.CourseId).HasColumnName("Course_Id");
             entity.Property(e => e.Dob)
                 .HasColumnType("date")
                 .HasColumnName("DOB");
@@ -56,8 +71,17 @@ public partial class Nextleapdbcontex : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("mobile_number");
+            entity.Property(e => e.NationId).HasColumnName("nation_Id");
             entity.Property(e => e.RollNumber).HasMaxLength(20);
             entity.Property(e => e.StudentName).HasMaxLength(50);
+
+            entity.HasOne(d => d.Course).WithMany(p => p.Students)
+                .HasForeignKey(d => d.CourseId)
+                .HasConstraintName("FK_Course");
+
+            entity.HasOne(d => d.Nation).WithMany(p => p.Students)
+                .HasForeignKey(d => d.NationId)
+                .HasConstraintName("FK_nation");
         });
 
         OnModelCreatingPartial(modelBuilder);

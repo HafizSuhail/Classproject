@@ -18,4 +18,12 @@ public partial class Student
     public string? MobileNumber { get; set; }
 
     public string? Email { get; set; }
+
+    public int CourseId { get; set; }
+
+    public int NationId { get; set; }
+
+    public virtual Course? Course { get; set; }
+
+    public virtual Nationality? Nation { get; set; }
 }

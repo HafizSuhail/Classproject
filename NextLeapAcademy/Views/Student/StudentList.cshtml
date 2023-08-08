@@ -23,6 +23,8 @@
                         <th>Date OF Brith</th>
                         <th>Mobile Number</th>
                         <th>Email_ID</th>
+                        <th>Course</th>
+                        <th>Nationality</th>
                         <th colspan="3">Modify</th>
 
                     </tr>
@@ -38,6 +40,8 @@
                             <td>@stobj.Dob.ToShortDateString()</td>
                             <td>@stobj.MobileNumber</td>
                             <td>@stobj.Email</td>
+                            <td>@stobj.Course.Title</td>
+                            <td>@stobj.Nation.NationName</td>
                             <td><a class="btn btn-info btn-sm" href="@Url.Action("StudentRo","Student",new{Studentid = stobj.StudentId})">View</a></td>
                             <td><a class="btn btn-secondary btn-sm" href="@Url.Action("Seditorpage","Student",new{Studentid = stobj.StudentId})">Edit</a></td>
                             <td><a class="btn btn-danger btn-sm" href="#" onclick="deleteStudent(@stobj.StudentId)">Delete</a></td>

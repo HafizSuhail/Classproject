@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using NextLeapAcademy.BusinessEntities;
 using NextLeapAcademy.Models;
 using System.Linq.Expressions;
@@ -16,7 +19,11 @@ namespace NextLeapAcademy
             var DBStudentList = new Nextleapdbcontex(); // Created the object of combined class of DB & C# Class
 
             // (2), Create the list of objects Student class (Varible of list )
-            var Student = DBStudentList.Students.ToList(); // Here the 1st Student is List name & 2nd Students is DB Class Table Name  
+            var Student = DBStudentList.Students             // Here the 1sStudent is List name & 2nd Students is DB Class Table Name  
+                                        .Include(p => p.Course)
+                                        .Include(p => p.Nation)
+                                        .ToList();
+            //var Student = DBStudentList.Students.ToList();
 
             return View(Student);
         }
@@ -24,14 +31,55 @@ namespace NextLeapAcademy
         [HttpGet]
         public IActionResult AddStudent()
         {
-            return View();
+            var courselist= new StudenteditorModel();
+
+            courselist.Courses = new List<SelectListItem>();
+
+            var dbcontex = new Nextleapdbcontex();
+            var courses = dbcontex.Courses.ToList(); // we are getting list of course objects from DB
+
+            // we are looping through courses and will prepare an object of selectListItem and will
+            // add to model.Courses
+
+            foreach (var course in courses)
+            {
+                var courseTitle = $"{course.Title}|{course.Duration}Days|{course.Price}/INR";
+
+                var courseItem = new SelectListItem {Value = course.CourseId.ToString(),
+                Text = courseTitle
+                };
+
+                courselist.Courses.Add(courseItem);
+
+            }
+
+            var nationlist = new StudenteditorModel();
+
+            nationlist.Nations = new List<SelectListItem>();
+
+            var dbcontex2 = new Nextleapdbcontex();
+            var Nations = dbcontex2.Nationalities.ToList();
+
+            foreach (var nation in Nations)
+            {
+                var nationame = $"{nation.NationName}";
+                var nationitem = new SelectListItem { Value = nation.NationId.ToString(), Text = nationame };
+
+                nationlist.Nations.Add(nationitem);
+            }
+
+
+
+
+            return View(nationlist);
         }
 
         [HttpPost]
         public IActionResult StudentForm(StudenteditorModel Admininputs)
         {
+            //ModelState.Remove("Courses");
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
 
                 // Here we have to do 3 Things
@@ -49,6 +97,9 @@ namespace NextLeapAcademy
                 newStudent.Dob = Admininputs.Dob;
                 newStudent.MobileNumber = Admininputs.MobileNumber;
                 newStudent.Email = Admininputs.Email;
+                newStudent.CourseId = Admininputs.Courseid;
+                newStudent.NationId = Admininputs.Nationid;
+                
 
                 // Created the new object of dbcontex class
                 var UItodbclass = new Nextleapdbcontex();
@@ -92,6 +143,8 @@ namespace NextLeapAcademy
                 editStudent.MobileNumber = fetchstuid.MobileNumber;
                 editStudent.Email = fetchstuid.Email;
                 editStudent.StudentId = fetchstuid.StudentId;
+                editStudent.Courseid = fetchstuid.CourseId;
+                editStudent.Nationid = fetchstuid.NationId;
 
                 return View(editStudent);
             }else 
@@ -119,6 +172,8 @@ namespace NextLeapAcademy
                 fetinputid.MobileNumber = updateinputs.MobileNumber;
                 fetinputid.Email = updateinputs.Email;
                 fetinputid.StudentId = updateinputs.StudentId;
+                fetinputid.CourseId = updateinputs.Courseid;
+                fetinputid.NationId = updateinputs.Nationid;
 
                 uptodb.Students.Update(fetinputid);
                 uptodb.SaveChanges();

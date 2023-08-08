@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace NextLeapAcademy.Models
@@ -36,5 +37,20 @@ namespace NextLeapAcademy.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string? Email { get; set; }
+
+        [Required(ErrorMessage = "Please select a Course")]
+        [Display(Name = "Course")]
+        public int Courseid { get; set; }
+
+        [Required(ErrorMessage = "Please select a Nationality")]
+        [Display(Name = "Nationality")]
+        public int Nationid { get; set; }
+
+       
+        public List<SelectListItem> Courses { get; set; }
+
+        public List<SelectListItem> Nations { get; set; }
+
+
     }
 }
