@@ -6,7 +6,9 @@ namespace NextLeapAcademy
     {
         public IActionResult Home()
         {
-            return View("Homepage");
+            //string userName = Request.Cookies["username"];
+           string userName = HttpContext.Session.GetString("Username");
+            return View("Homepage", userName);
         }
     }
 }

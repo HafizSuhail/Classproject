@@ -1,0 +1,9 @@
+﻿
+
+// windows authentication
+Scaffold-DbContext -Connection "Data Source=DC-MUHAMMEDSUHA;Initial Catalog=Nextleap;Trusted_Connection=True;TrustServerCertificate=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir BusinessEntities -context Nextleapdbcontex
+
+
+--to update
+
+Scaffold-DbContext -Connection "Data Source=DC-MUHAMMEDSUHA;Initial Catalog=Nextleap;Trusted_Connection=True;TrustServerCertificate=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir BusinessEntities -context Nextleapdbcontex -force
