@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NextLeapAcademy.styles.css" asp-append-version="true" />
+    @*@model string*@
 </head>
 <body>
     <header>
@@ -25,9 +26,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="@Url.Action(controller:"Course",action:"CoursesList")">Courses</a>
                         </li>
+                        
                     </ul>
                     <div class=" d-flex justify-content-end grid gap-0 column-gap-3">
-                        <a class="btn btn-dark text-white" href="@Url.Action(controller:"Account",action:"Login")">Logout</a>
+                        <a class="btn btn-dark text-white" href="@Url.Action(controller:"Account",action:"Logout")">Logout</a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -8,6 +9,7 @@ using System.Linq.Expressions;
 
 namespace NextLeapAcademy
 {
+    [Authorize]
     public class StudentController : Controller
     {
         public IActionResult StudentList()
@@ -31,53 +33,85 @@ namespace NextLeapAcademy
         [HttpGet]
         public IActionResult AddStudent()
         {
-            var courselist= new StudenteditorModel();
+            var coursesnNations = new StudenteditorModel();
 
-            courselist.Courses = new List<SelectListItem>();
+            using (var dbcontex = new Nextleapdbcontex()) 
+            {
+                var courses = dbcontex.Courses.ToList(); // we are getting list of course objects from DB
 
-            var dbcontex = new Nextleapdbcontex();
-            var courses = dbcontex.Courses.ToList(); // we are getting list of course objects from DB
+                coursesnNations.Courses = new List<SelectListItem>();
+                foreach (var course in courses) // Course list loop
+                {
+                    var courseTitle = $"{course.Title}|{course.Duration}Days|{course.Price}/INR";
+
+                    var courseItem = new SelectListItem
+                    {
+                        Value = course.CourseId.ToString(),
+                        Text = courseTitle
+                    };
+
+                    coursesnNations.Courses.Add(courseItem);
+                }
+
+                var nations = dbcontex.Nationalities.ToList();
+
+                coursesnNations.Nations = new List<SelectListItem>();
+
+                foreach (var nation in nations) // Nations list loop
+                {
+                    var nationame = $"{nation.NationName}";
+                    var nationitem = new SelectListItem { Value = nation.NationId.ToString(), Text = nationame };
+
+                    coursesnNations.Nations.Add(nationitem);
+                }
+            }
+
+            //coursesnNations.Courses = courses.Select(Course => new SelectListItem
+            //{
+            //    Value = course.CourseId.ToString(),
+            //    Text = courseTitle
+
+            //}).ToList();
+            //var courselist= new StudenteditorModel();
+
+            //var dbcontex = new Nextleapdbcontex();
 
             // we are looping through courses and will prepare an object of selectListItem and will
             // add to model.Courses
+            //foreach (var course in courses) // Course list loop
+            //{
+            //    var courseTitle = $"{course.Title}|{course.Duration}Days|{course.Price}/INR";
 
-            foreach (var course in courses)
-            {
-                var courseTitle = $"{course.Title}|{course.Duration}Days|{course.Price}/INR";
+            //    var courseItem = new SelectListItem {Value = course.CourseId.ToString(),
+            //    Text = courseTitle
+            //    };
 
-                var courseItem = new SelectListItem {Value = course.CourseId.ToString(),
-                Text = courseTitle
-                };
+            //    courselist.Courses.Add(courseItem);
 
-                courselist.Courses.Add(courseItem);
+            //}
+            //var nationlist = new StudenteditorModel();
+            //nationlist.Nations = new List<SelectListItem>();
+            //var dbcontex2 = new Nextleapdbcontex();
+            //var Nations = dbcontex2.Nationalities.ToList();
 
-            }
+            //foreach (var nation in Nations) // Nations list loop
+            //{
+            //    var nationame = $"{nation.NationName}";
+            //    var nationitem = new SelectListItem { Value = nation.NationId.ToString(), Text = nationame };
 
-            var nationlist = new StudenteditorModel();
+            //    nationlist.Nations.Add(nationitem);
+            //}
 
-            nationlist.Nations = new List<SelectListItem>();
-
-            var dbcontex2 = new Nextleapdbcontex();
-            var Nations = dbcontex2.Nationalities.ToList();
-
-            foreach (var nation in Nations)
-            {
-                var nationame = $"{nation.NationName}";
-                var nationitem = new SelectListItem { Value = nation.NationId.ToString(), Text = nationame };
-
-                nationlist.Nations.Add(nationitem);
-            }
-
-
-
-
-            return View(nationlist);
+            
+             
+            return View(coursesnNations);
         }
 
         [HttpPost]
         public IActionResult StudentForm(StudenteditorModel Admininputs)
         {
             //ModelState.Remove("Courses");
+            //ModelState.Remove("Nationalities");
 
             if (ModelState.IsValid)
             {
@@ -99,6 +133,7 @@ namespace NextLeapAcademy
                 newStudent.Email = Admininputs.Email;
                 newStudent.CourseId = Admininputs.Courseid;
                 newStudent.NationId = Admininputs.Nationid;
+                
                 
 
                 // Created the new object of dbcontex class

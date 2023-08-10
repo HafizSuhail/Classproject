@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NextLeapAcademy.BusinessEntities;
 using NextLeapAcademy.Models;
 
 namespace NextLeapAcademy
 {
+    [Authorize]
     public class CourseController : Controller
     {
         public IActionResult CoursesList()
