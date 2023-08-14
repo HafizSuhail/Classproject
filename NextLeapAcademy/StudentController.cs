@@ -110,52 +110,85 @@ namespace NextLeapAcademy
         [HttpPost]
         public IActionResult StudentForm(StudenteditorModel Admininputs)
         {
-            //ModelState.Remove("Courses");
-            //ModelState.Remove("Nationalities");
+            ModelState.Remove("Courses");
+            ModelState.Remove("Nationalities");
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
 
-                // Here we have to do 3 Things
-                // Model Binding// Taking the userinputs into entity class object  (Internally its done by binding the model Class here & its object name is   userdetails)
-                // Create an abject of Stdent Entity Class
+            //    // Here we have to do 3 Things
+            //    // Model Binding// Taking the userinputs into entity class object  (Internally its done by binding the model Class here & its object name is   userdetails)
+            //    // Create an abject of Stdent Entity Class
 
-                Student newStudent = new Student(); // here Student is Entity Class name & newstudent is Its object name
+            //    Student newStudent = new Student(); // here Student is Entity Class name & newstudent is Its object name
 
-                // Taking the userinputs into entity class object 
+            //    // Taking the userinputs into entity class object 
 
-                
-                newStudent.RollNumber = Admininputs.RollNumber;
-                newStudent.StudentName = Admininputs.Name;
-                newStudent.Gender = Admininputs.Gender;
-                newStudent.Dob = Admininputs.Dob;
-                newStudent.MobileNumber = Admininputs.MobileNumber;
-                newStudent.Email = Admininputs.Email;
-                newStudent.CourseId = Admininputs.Courseid;
-                newStudent.NationId = Admininputs.Nationid;
-                
-                
 
-                // Created the new object of dbcontex class
-                var UItodbclass = new Nextleapdbcontex();
+            //    newStudent.RollNumber = Admininputs.RollNumber;
+            //    newStudent.StudentName = Admininputs.Name;
+            //    newStudent.Gender = Admininputs.Gender;
+            //    newStudent.Dob = Admininputs.Dob;
+            //    newStudent.MobileNumber = Admininputs.MobileNumber;
+            //    newStudent.Email = Admininputs.Email;
+            //    newStudent.CourseId = Admininputs.Courseid;
+            //    newStudent.NationId = Admininputs.Nationid;
 
-                // Give this object To DB Context to Add the data in the Database
-                UItodbclass.Add(newStudent);
 
-                //Now Save the datachanges in Databas
 
-                UItodbclass.SaveChanges();
+            //    // Created the new object of dbcontex class
+            //    var UItodbclass = new Nextleapdbcontex();
 
-                return RedirectToAction("StudentList");
+            //    // Give this object To DB Context to Add the data in the Database
+            //    UItodbclass.Add(newStudent);
 
-            }
-            else
-            {
-                ModelState.AddModelError("", "Student record not Save, please fix errors and save again!");
-                return View("AddStudent", Admininputs);
-            }
+            //    //Now Save the datachanges in Databas
 
-            
+            //    UItodbclass.SaveChanges();
+
+            //    return RedirectToAction("StudentList");
+
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", "Student record not Save, please fix errors and save again!");
+            //    return View("AddStudent", Admininputs);
+            //}
+
+
+            // Here we have to do 3 Things
+            // Model Binding// Taking the userinputs into entity class object  (Internally its done by binding the model Class here & its object name is   userdetails)
+            // Create an abject of Stdent Entity Class
+
+            Student newStudent = new Student(); // here Student is Entity Class name & newstudent is Its object name
+
+            // Taking the userinputs into entity class object 
+
+
+            newStudent.RollNumber = Admininputs.RollNumber;
+            newStudent.StudentName = Admininputs.Name;
+            newStudent.Gender = Admininputs.Gender;
+            newStudent.Dob = Admininputs.Dob;
+            newStudent.MobileNumber = Admininputs.MobileNumber;
+            newStudent.Email = Admininputs.Email;
+            newStudent.CourseId = Admininputs.Courseid;
+            newStudent.NationId = Admininputs.Nationid;
+
+
+
+            // Created the new object of dbcontex class
+            var UItodbclass = new Nextleapdbcontex();
+
+            // Give this object To DB Context to Add the data in the Database
+            UItodbclass.Add(newStudent);
+
+            //Now Save the datachanges in Databas
+
+            UItodbclass.SaveChanges();
+
+            return RedirectToAction("StudentList");
+
+
         }
         [HttpGet]
         public IActionResult Seditorpage(int Studentid)

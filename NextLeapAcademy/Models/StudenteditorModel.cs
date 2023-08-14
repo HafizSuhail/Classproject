@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace NextLeapAcademy.Models
 {
@@ -30,7 +31,6 @@ namespace NextLeapAcademy.Models
         [Required(ErrorMessage = "Enter the Mobile Number")]
         [Display(Name = "MobileNumber")]
         [Phone]
-
         public string? MobileNumber { get; set; }
 
         [Required(ErrorMessage ="Enter the Mail_ID")]
@@ -46,9 +46,9 @@ namespace NextLeapAcademy.Models
         [Display(Name = "Nationality")]
         public int Nationid { get; set; }
 
-       
+        [IgnoreDataMember]
         public List<SelectListItem> Courses { get; set; }
-
+        [IgnoreDataMember]
         public List<SelectListItem> Nations { get; set; }
 
 
